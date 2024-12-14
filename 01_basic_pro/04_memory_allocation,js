@@ -1,0 +1,21 @@
+// primitive datatype
+
+// 7 types : String, Number, Boolaen, Null, Undefine, Symbol, Bigint
+
+// Javacript is a Dynamically typed Language
+
+const score = 100;
+const scoreValue = 100.3;
+const isLoggedIn = false;
+const outsideTemp = null;
+let userEmail; //undefine
+
+const id = Symbol('123');
+const anotherId = Symbol('123');
+console.log(id == anotherId);
+
+
+
+// non-primitive (reference) data type
+
+// Array, Objects, Functions
