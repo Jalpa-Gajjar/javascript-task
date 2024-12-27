@@ -1,5 +1,15 @@
-// ******** for each loop on array *********
+//Limitations of forEach() Method:
+//No Break or Continue: Unlike for loops, you cannot break the forEach() loop or use continue to skip to the next iteration. It will always iterate over all elements.
+
+//No Return Value: The forEach() loop does not return a new array, it returns undefined.
+
+//Asynchronous Issues: The forEach() loop does not handle asynchronous operations well. If you need to perform asynchronous operations, consider using for…of with async/await or Promise.all.
+
 // for each is a heigher order function
+
+// The forEach() method is not executed for empty elements.
+
+// ******** for each loop on array *********
 const coding = ["js", "ruby", "java", "python", "cpp"];
 
 coding.forEach( function (val){
