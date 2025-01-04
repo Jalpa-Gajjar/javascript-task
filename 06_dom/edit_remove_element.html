@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit & Remove Element</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+
+    <script>
+        // ******Add list item*******
+        function addLanguage(langName){
+            const li = document.createElement("li");
+            li.innerHTML = `${langName}`
+            document.querySelector(".language").appendChild(li);
+        }
+        addLanguage("java");
+        addLanguage("paython");
+
+        // above method to create element and add through appendchild is traverse all tree structure and then add at the last, so optimization issue create when collection of items in thousand or lakh
+
+        // so above optimization approach issue handle through below code
+        function addOptiLanguage(langName){
+            const li = document.createElement("li");
+            // const addText = document.createTextNode(langName);
+            // li.appendChild(addText);
+            li.appendChild(document.createTextNode(langName));  // this and above both r same in short form
+            document.querySelector(".language").appendChild(li);
+        } 
+        addOptiLanguage("Ruby");
+        addOptiLanguage("golang");
+
+
+        // ********Edit element********
+        // edit second element
+        const secondLang = document.querySelector("li:nth-child(2)")   // Selects the second li element in a list
+        
+        // secondLang.innerHTML = "Mojo";
+        const newLi = document.createElement("li"); // above innerHTML r same
+
+        newLi.textContent = "Mojo";
+        // newLi.appendChild(document.createTextNode("Mojo")); // above both r same
+        
+        secondLang.replaceWith(newLi);
+
+        // edit first element through second way
+        const firstLang = document.querySelector("li:first-child");
+        firstLang.outerHTML = '<li>TypeScript</li>';  
+        
+        //******* Remove Element ********
+        // Remove last element
+        const lastLang = document.querySelector("li:last-child");
+        lastLang.remove(); 
+    </script>
+</body>
+</html>
