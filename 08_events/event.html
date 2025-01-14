@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://www.pexels.com/photo/blue-headphone-1037992/" alt="headphone"></li>
+            <li><img width="200px" id="flower" src="https://www.pexels.com/photo/elegant-various-shaped-glass-vases-with-tender-assorted-flowers-in-daylight-6070391" alt=""></li>
+            <li><img width="200px" id="bird" src="https://www.pexels.com/photo/selective-focus-photography-of-blue-bird-2347460/" alt=""></li>
+            <li><img width="200px" id="camera" src="https://www.pexels.com/photo/black-canon-camera-2984630" alt=""></li>   
+            <li><img width="200px" id="sea" src="https://www.pexels.com/photo/aerial-view-of-a-beach-during-sunset-5111271" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // below three approch to click on element, 4 approch is used in modern JS
+    // 1)// onclick="alert('camera') to add in img tag
+
+    // 2)// document.getElementById('camera').onclick = function(){
+    //     alert("camera clicked")
+    // }
+
+    // 3)// document.getElementById('camera').addEventListener('click',function(){
+    //   alert("camera clicked again")
+    // });  
+
+    // 4) // attachEvent() used place of addEventListner
+    // jQuery - on    event listner in jQuery
+
+    // syntax: addEventListner('click', function(){}, false)
+    
+    // ********event object ******** 
+    //  basically two type events to get browser event and environment event
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log(e);
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    //*******event propogation below*******
+    // there r two context of event propogation - 1)event bubbling (default)(false) (bottom to top) 2)event capturing (true)(top to bottom)
+ 
+    // 1)*****event bubbling (first execute inner then outer, bubbling up, false)*****
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('camera').addEventListener('click', function(e){
+    //     console.log("camera clicked");
+    // }, false)
+
+
+    // 2)*********event capturing (first execute outer then inner, true)*******
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, true)
+
+    // document.getElementById('camera').addEventListener('click', function(e){
+    //     console.log("camera clicked");
+    // }, true)
+
+    // ******* stop propogation*******
+    // stop propogation used to stop the bubble up event 
+    // document.getElementById('camera').addEventListener('click', function(e){
+    //     console.log("camera clicked");
+    //     e.stopPropagation()
+    // }, false)
+    
+    // change default behavior (don't move on google tab)
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();  // stop to move on google link
+    //     e.stopPropagation()  // stop bubbling up
+    //     console.log("google clicked");
+    // }, false)
+   
+    
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>
