@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetInterval</title>
+    <style>
+        body{
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        // ****** set Interval ******
+        // setInterval(function(){
+        //     // console.log("Jalpa");
+        //     console.log("jalpa", Date.now());
+            
+        // }, 1000)    // continuosaly Execute after every one second 
+
+        // const sayDate = function(){
+        //     console.log("Jalpa", Date.now());
+        // }
+        // setInterval(sayDate, 1000);  // pass reference in funtion (sayDate)
+
+        // above both r same to write setInterval
+
+        // const sayDate = function(str){
+        //     console.log(str, Date.now());
+        // };   // here str pass as an argument in function
+        // setInterval(sayDate, 1000, "hello");   //parameter pass in function as argument 
+
+        // ******* clear interval *******
+        // const intervalId = setInterval(sayDate, 1000, "hello");
+        
+        // clearInterval(intervalId);
+
+        // project - start and stop button 
+        let intervalId;
+        const sayDate = function(str){
+            console.log(str, Date.now());
+        };
+
+        document.getElementById('start').addEventListener('click', function() {
+            if (!intervalId) { // Prevent multiple intervals
+                intervalId = setInterval(sayDate, 1000, "hello");
+                console.log('Interval started');
+            }
+        });
+
+        document.getElementById('stop').addEventListener('click', function() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null; // Reset the interval ID
+                console.log('Interval stopped');
+            }
+        });
+
+    </script>
+</body>
+</html>
