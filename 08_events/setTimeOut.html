@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeOut</title>
+</head>
+<body>
+    <h1>JavaScript</h1>
+    <button id="stop">stop</button>
+
+    <script>
+        // ******** setTimeOut *********
+        // setTimeout(function(){
+        //     console.log("Jalpa");
+        // },2000);    // only one time execute after 2 second 
+
+        // const sayJalpa = function(){
+        //     console.log("Jalpa");
+        // }
+        // setTimeout(sayJalpa, 2000); // just pass reference in function(sayJalpa)
+        // Above both approach r same
+
+        const changeText = function(){
+            document.querySelector('h1').innerHTML = "Hello JavaScript"
+        };
+        // setTimeout(changeText, 2000);
+
+        // ********** Clear time out **********
+        const changeMe = setTimeout(changeText, 2000);
+
+        document.querySelector('#stop').addEventListener("click", function(){
+            clearTimeout(changeMe);
+            console.log("Stopped");
+        })
+        
+    </script>
+</body>
+</html>
+
+<!-- The setTimeout() method calls a function after a number of milliseconds.
+
+1 second = 1000 milliseconds.
+
+Notes:-
+The setTimeout() is executed only once.
+
+If you need repeated executions, use setInterval() instead.
+
+Use the clearTimeout() method to prevent the function from starting.
+
+To clear a timeout, use the id returned from setTimeout():
+
+myTimeout = setTimeout(function, milliseconds);
+Then you can to stop the execution by calling clearTimeout():
+
+clearTimeout(myTimeout); -->
